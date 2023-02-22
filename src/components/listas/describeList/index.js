@@ -1,55 +1,38 @@
 import { Space, Table, Tag } from 'antd';
-const columns = [
-  {
-    title: 'Nome',
-    dataIndex: 'nome',
-    key: 'nome',
-    render: (text) => <a>{text}</a>,
-  },
-  {
-    title: 'Preço R$',
-    dataIndex: 'preco',
-    key: 'preco',
-    render: (text) => <>R$ {text}</>
-  },
-  {
-    title: 'Quantidade',
-    dataIndex: 'quantidade',
-    key: 'quantidade',
-  },
-  {
-    title: 'Ação',
-    key: 'acao',
-    render: (_, record) => (
-      <Space size="middle">
-        <a>Apagar</a>
-      </Space>
-    ),
-  },
-];
 
-const data = [
-  {
-    key: '1',
-    nome: 'Sabão em pó',
-    preco: 32,
-    quantidade: 2,
-  },
-  {
-    key: '2',
-    nome: 'Amaciante',
-    preco: 19.99,
-    quantidade: 1,
-  },
-  {
-    key: '3',
-    nome: 'Detergente',
-    preco: 2.5,
-    quantidade: 8,
-  },
-];
 
-const Describe = () => {
+const Describe = ({data, apagar}) => {
+  const columns = [
+    {
+      title: 'Nome',
+      dataIndex: 'nome',
+      key: 'nome',
+      render: (text) => <p>{text}</p>,
+    },
+    {
+      title: 'Preço R$',
+      dataIndex: 'preco',
+      key: 'preco',
+      render: (text) =>  <p>R$ {text}</p>
+    },
+    {
+      title: 'Quantidade',
+      dataIndex: 'quantidade',
+      key: 'quantidade',
+    },
+    {
+      title: 'Ação',
+      key: 'acao',
+      render: (_, record) => (
+        <Space size="middle">
+          <a onClick={() => {
+            apagar(record)
+          }}>Apagar</a>
+        </Space>
+      ),
+    },
+  ];
+  
   return <Table columns={columns} dataSource={data} />;
 }
 

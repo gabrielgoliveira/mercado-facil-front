@@ -20,7 +20,7 @@ root.render(
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="showlists" element={<ShowLists/>} />
-          <Route exact path ="describe-list" element={<DescribeList />} />
+          <Route exact path ="describe-list/:id" element={<DescribeList />} />
           <Route exact path ="add-list" element={<AddList />} />
           <Route exact path ="add-product" element={<AddProduct />} />
           <Route path="*" element={<h1>Route does not exist</h1>}/>

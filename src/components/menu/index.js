@@ -13,7 +13,7 @@ const items = [
   },
   {
     label: (
-      <Link to="/add-list">'Cadastrar nova lista'</Link>
+      <Link to="/add-list">Nova lista</Link>
     ),
     key: 'add-list',
     icon: <PlusOutlined />,
