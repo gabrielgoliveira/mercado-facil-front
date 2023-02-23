@@ -1,8 +1,9 @@
 import { Space, Table, Tag } from 'antd';
+import { useEffect, useState } from 'react';
 
 
-const Describe = ({data, apagar}) => {
-  const columns = [
+const Describe = ({data, apagar, showApagar}) => {
+  const [columns, setColumns] = useState([
     {
       title: 'Nome',
       dataIndex: 'nome',
@@ -19,20 +20,28 @@ const Describe = ({data, apagar}) => {
       title: 'Quantidade',
       dataIndex: 'quantidade',
       key: 'quantidade',
-    },
-    {
-      title: 'Ação',
-      key: 'acao',
-      render: (_, record) => (
-        <Space size="middle">
-          <a onClick={() => {
-            apagar(record)
-          }}>Apagar</a>
-        </Space>
-      ),
-    },
-  ];
+    }
+  ]);
   
+  useEffect(() => {
+    if(showApagar) {
+      setColumns([
+        ...columns,
+        {
+          title: 'Ação',
+          key: 'acao',
+          render: (_, record) => (
+            <Space size="middle">
+              <a onClick={() => {
+                apagar(record)
+              }}>Apagar</a>
+            </Space>
+          ),
+        }
+
+      ]);
+    }
+  }, [])
   return <Table columns={columns} dataSource={data} />;
 }
 

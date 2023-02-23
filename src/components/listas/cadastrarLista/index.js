@@ -148,6 +148,7 @@ function FormList() {
         <TableItens
           data={itens}
           apagar={apagar}
+          showApagar={true}
         />
       </div>
 

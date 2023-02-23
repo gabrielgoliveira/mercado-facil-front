@@ -11,7 +11,7 @@ const Listas = () => {
   
   useEffect(() => {
     buscaLista();
-  })
+  }, [])
 
   const buscaLista = async () => {
     let base_url = "http://localhost:8080/api"
@@ -21,14 +21,18 @@ const Listas = () => {
 
   return (
     <div style={{
-      font: "roboto"
+      font: "roboto",
+      margin: 30
     }}>
+      <div style={{
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between"
+      }}>
+        <h1>{lista.nome}</h1>
+      </div>
       
-      <h1>{lista.nome}</h1>
-      <Button icon={<PlusOutlined />}>
-        Cadastrar novo produto
-      </Button>
-      <DescribeList data={lista.items}></DescribeList>
+      <DescribeList data={lista.items} showApagar={false}></DescribeList>
     </div>
   );
 }
